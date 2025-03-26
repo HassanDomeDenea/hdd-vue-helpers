@@ -42,10 +42,11 @@ jobs:
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
       - run: corepack enable
-      - uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
+      - uses: actions/cache@v3
         with:
-          node-version: 22
-          cache: bun
+          key: bun-cache-dir
+          path: ~/.bun/install/cache
+      - uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
         run: bun install
@@ -60,10 +61,11 @@ jobs:
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
       - run: corepack enable
-      - uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
+      - uses: actions/cache@v3
         with:
-          node-version: 22
-          cache: bun
+          key: bun-cache-dir
+          path: ~/.bun/install/cache
+      - uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
         run: bun install
