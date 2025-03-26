@@ -1,17 +1,21 @@
 {
   "name": "hdd-vue-helpers",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "build": "bun --filter './packages/**' prepack",
-    "test": "bun --filter './packages/**' run test",
-    "typecheck": "bun --filter './packages/**' run typecheck",
+    "build": "bun --filter './packages/*' prepack",
+    "test": "bun --filter './packages/*' test",
+    "typecheck": "bun --filter './packages/**' typecheck",
     "release": "bun run lint && bun run typecheck && bun run test && changelogen --output CHANGELOG.md && jiti scripts/release.ts && bun -r run release:publish && git push --follow-tags"
   },
-  "workspaces": ["packages/*", "playground/*", ".histoire"],
+  "workspaces": [
+    "packages/*",
+    "playground/*",
+    ".histoire"
+  ],
   "devDependencies": {
     "@antfu/eslint-config": "^4.11.0",
     "@unocss/eslint-plugin": "^66.0.0",
